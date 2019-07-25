@@ -15,11 +15,24 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+//first example to create task
 task showDate {
     dependsOn build // means that this task will be executed before our task
-    group = "my own tasks"
+    group = "my own tasks" // creates new group of tasks
     description = "Show current date task"
     doLast { // actions of this task
         println 'Current date: ' + new Date()
     }
 }
+
+//second example to create own task more close to Java code (it's groovy)
+class ShowDate extends DefaultTask {
+    String date = "Date is: "
+
+    @TaskAction
+    void showCurrentData() {
+        println date + new Date()
+    }
+}
+
+task showCurrentData(type: ShowDate)
