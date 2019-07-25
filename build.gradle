@@ -33,6 +33,11 @@ class ShowDate extends DefaultTask {
     void showCurrentData() {
         println date + new Date()
     }
+
 }
 
 task showCurrentData(type: ShowDate)
+
+task customDate(type: ShowDate) {
+    date = "Custom date is: "
+}
